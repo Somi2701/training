@@ -4,7 +4,7 @@
 			<?php
 			 $filename =basename( $_SERVER['REQUEST_URI']);
 			
-               $productmenu =array('products.php','categories.php','tags.php');
+               $productmenu =array('product.php','categories.php','tags.php');
 			 ?>
 			<!--<h1 id="sidebar-title"><a href="#">Simpla Admin</a></h1>
 		  
@@ -21,20 +21,19 @@
 			<ul id="main-nav">  <!-- Accordion Menu -->
 				
 				<li>
-					<a href="http://www.google.com/" class="nav-top-item no-submenu"> <!-- Add the class "no-submenu" to menu items with no sub menu -->s
-						Dashboard
+					<a href="#" class="nav-top-item no-submenu"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
+						Dashboard              
 					</a>       
 				</li>
-			
 				<li> 
              <a href="#"class="nav-top-item <?php if(in_array($filename,$productmenu)): ?>current<?php endif; ?>"><!-- Add the class "current" to current menu item -->
 					Products
 					</a>
 					<ul>
-					
-						<li><a<?php if($filename=='products.php'): ?>class="current"<?php endif; ?> href="products.php">Manage Product</a></li> <!-- Add class "current" to sub menu items also -->
-						<li><a<?php if($filename=='categories.php'): ?>class="current"<?php endif; ?> href="categories.php">Manage Categories</a></li>
-						<li><a<?php if($filename=='tags.php'): ?>class="current"<?php endif;?> href="tags.php">Manage Tags</a></li>
+						<li><a class="<?php if($filename=='products.php') : ?>current <?php endif; ?>"
+						href="product.php" >Manage Product</a></li> <!-- Add class "current" to sub menu items also -->
+						<li><a class="<?php if($filename=='categories.php'): ?>current<?php endif;?>"href="categories.php">Manage Categories</a></li>
+						<li><a class="<?php if($filename=='tags.php'): ?>current<?php endif; ?>"href="tags.php">Manage Tags</a></li>
 					</ul>
 				</li>
 				
