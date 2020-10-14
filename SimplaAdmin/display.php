@@ -25,9 +25,7 @@ if (mysqli_num_rows($result) > 0) {
     }
 }
 ?>
-</tbody>
-</div>
-</table>
+
 <?php
 $sql1 = "Select * from products";
 $result1 = mysqli_query($conn, $sql1) or die("error");
