@@ -27,13 +27,14 @@
 				</li>
 			
 				<li> 
-             <a href="#"class="nav-top-item <?php if(in array($filename,$productmenu)): ?>current<?php endif; ?>"><!-- Add the class "current" to current menu item -->
+             <a href="#"class="nav-top-item <?php if(in_array($filename,$productmenu)): ?>current<?php endif; ?>"><!-- Add the class "current" to current menu item -->
 					Products
 					</a>
 					<ul>
-						<li><a<?php if($filename=='products.php'): ?>class="current"<?php endif;href="products.php">Manage Product</a></li> <!-- Add class "current" to sub menu items also -->
-						<li><a?php if($filename=='categories.php'): ?>class="current"<?php endif; href="categories.php">Manage Categories</a></li>
-						<li><a?php if($filename=='tags.php'): ?>class="current"<?php endif; href="tags.php">Manage Tags</a></li>
+					
+						<li><a<?php if($filename=='products.php'): ?>class="current"<?php endif; ?> href="products.php">Manage Product</a></li> <!-- Add class "current" to sub menu items also -->
+						<li><a<?php if($filename=='categories.php'): ?>class="current"<?php endif; ?> href="categories.php">Manage Categories</a></li>
+						<li><a<?php if($filename=='tags.php'): ?>class="current"<?php endif;?> href="tags.php">Manage Tags</a></li>
 					</ul>
 				</li>
 				
