@@ -97,6 +97,7 @@
 							</thead>
 							<tfoot>
 								<tr>
+								<?php  include('display.php');?>		
 									<td colspan="6">
 										<div class="bulk-actions align-left">
 											<select name="dropdown">
@@ -199,7 +200,7 @@
 						$(document).ready(function(){
 							function loadproduct(){
 								$.ajax({
-										url : "showproduct.php",
+										url : "display.php",
 										type : "POST",
 										success : function(data){
 											$("#showtable").html(data);
@@ -400,4 +401,5 @@
 			</div>
 			 -->
 			<!-- End Notifications -->
+					
                     <?php  include('footer.php');?>			
