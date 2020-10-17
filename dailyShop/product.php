@@ -3,7 +3,6 @@
 <?php include('config.php');?>
 
   <!-- / menu -->  
- 
   <!-- catg header banner section -->
   <section id="aa-catg-head-banner">
    <img src="img/fashion/fashion-header-bg-8.jpg" alt="fashion img">
@@ -53,10 +52,12 @@
               </div>
             </div>
             <div class="aa-product-catg-body">
+            <div id="show">
+            <div id="hide">
               <ul class="aa-product-catg">
             
                 <?php
-                    $sql="SELECT * FROM products";
+                    $sql="SELECT * FROM products LIMIT 10";
               
                     $result = mysqli_query($conn, $sql) or die("SQL Query Failed.");
                       if (mysqli_num_rows($result) > 0 ) {
@@ -66,7 +67,7 @@
                 <li>
                   <figure>
                     <a class="aa-product-img" href="#"><img src="<?php echo $row["path"] ?>" alt="polo shirt img"></a>
-                    <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                    <a class="aa-add-card-btn" href="cart.php?Id=<?php echo $row["pid"] ?>"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                     <figcaption>
                       <h4 class="aa-product-title"><a href="#"><?php echo $row["name"] ?></a></h4>
                       <span class="aa-product-price">$<?php echo $row["price"] ?></span><span class="aa-product-price"><del><?php echo $row["price"] ?></del></span>
@@ -76,64 +77,84 @@
                   <div class="aa-product-hvr-content">
                     <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
                     <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                    <a href="" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
+                    <a href="" id="one" data-id='<?php echo $row["pid"] ?>' data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
                   </div>
                   <!-- product badge -->
                   <span class="aa-badge aa-hot" href="#">HOT!</span>
                   
                   </li>
-
-
-                      <?php }} ?>
-                      
+                      <?php }} ?>     
               </ul> 
-              <!-- quick view modal/<a href='edit.php?id=<?php echo $row['sid']?>'>Edit</a>/ -->               
-
-              <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+              </div>
+              </div>
+              <!-- quick view modal// -->      
+              <script>
+                  $(document).ready(function(){
+                    $(document).on("click","#one", function(){
+                        var id=$(this).data("id");
+                        alert(id);
+                       
+                });
+  
+                          
+              }); 
+        
+                  <?php
+                    $sql4="SELECT * FROM products LIMIT 10";
+              
+                    $result4 = mysqli_query($conn, $sql4) or die("SQL Query Failed.");
+                    if (mysqli_num_rows($result4) > 0 ) {
+                        while ($row4 = mysqli_fetch_assoc($result4)) {
+                            //print_r($row);
+                            ?>
+                </script>         
+             <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+             
+               <div class="modal-dialog">
                   <div class="modal-content">                      
                     <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                       <div class="row">
-                        <!-- Modal view slider -->
+                        
                         <div class="col-md-6 col-sm-6 col-xs-12">                              
                           <div class="aa-product-view-slider">                                
                             <div class="simpleLens-gallery-container" id="demo-1">
                               <div class="simpleLens-container">
                                   <div class="simpleLens-big-image-container">
-                                      <a class="simpleLens-lens-image" data-lens-image="images/icons/dress.png">
-                                          <img src="images/icons/dress.png" class="simpleLens-big-image">
+                                      <a class="simpleLens-lens-image" data-lens-image="resources/images/icons/w1.jpeg">
+                                          <img src="resources/images/icons/w1.jpeg" class="simpleLens-big-image">
                                       </a>
                                   </div>
                               </div>
                               <div class="simpleLens-thumbnails-container">
                                   <a href="#" class="simpleLens-thumbnail-wrapper"
-                                     data-lens-image="images/icons/dress.png"
-                                     data-big-image="images/icons/dress.png">
-                                      <img src="images/icons/dress.png">
+                                     data-lens-image="resources/images/icons/w1.jpeg"
+                                     data-big-image="resources/images/icons/w1.jpeg">
+                                      <img src="resources/images/icons/w1.jpeg">
                                   </a>                                    
                                   <a href="#" class="simpleLens-thumbnail-wrapper"
-                                     data-lens-image="images/icons/dress1.png"
-                                     data-big-image="images/icons/dress1.png">
-                                      <img src="images/icons/dress1.png">
+                                     data-lens-image="resources/images/icons/w1.jpeg"
+                                     data-big-image="resources/images/icons/w1.jpeg">
+                                      <img src="resources/images/icons/w1.jpeg">
                                   </a>
 
                                   <a href="#" class="simpleLens-thumbnail-wrapper"
-                                     data-lens-image="images/icons/dress1.png"
-                                     data-big-image="images/icons/dress1.png">
-                                      <img src="images/icons/dress1.png">
+                                     data-lens-image="resources/images/icons/w1.jpeg"
+                                     data-big-image="resources/images/icons/w1.jpeg">
+                                      <img src="resources/images/icons/w1.jpeg">
                                   </a>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <!-- Modal view content -->
+                        
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <div class="aa-product-view-content">
                             <h3>T-Shirt</h3>
                             <div class="aa-price-block">
                               <span class="aa-product-view-price">$34.99</span>
                               <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
+                    
                             </div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi, veritatis quae repudiandae quod nulla porro quidem, itaque quis quaerat!</p>
                             <h4>Size</h4>
@@ -158,48 +179,20 @@
                               <p class="aa-prod-category">
                                 Category: <a href="#">Polo T-Shirt</a>
                               </p>
-                              <?php
-                                if(!empty($_SESSION["shopping_cart"])) {
-                                $cart_count = count(array_keys($_SESSION["shopping_cart"]));
-                             ?>
-                            <div class="aa-prod-view-bottom">
-                              <a href="insertcart.php" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                              <a href="#" class="aa-add-to-cart-btn">View Details</a>
-                            </div>
-                            <?php
-                            $result = mysqli_query($con,"SELECT * FROM `products`");
-                          while($row = mysqli_fetch_assoc($result)){
-                              echo "<div class='product_wrapper'>
-                              <form method='post' action=''>
-                              <input type='hidden' name='code' value=".$row['id']." />
-                              <div class='image'><img src='".$row['image']."' /></div>
-                              <div class='name'>".$row['name']."</div>
-                              <div class='price'>$".$row['price']."</div>
-                              <button type='submit' class='buy'>Buy Now</button>
-                              </form>
-                              </div>";
-                                  }
-                          mysqli_close($con);
-                          ?>
-                          
-                          <div style="clear:both;"></div>
-                          
-                          <div class="message_box" style="margin:10px 0px;">
-                          <?php echo $status; ?>
-                         
                             </div>
                             <div class="aa-prod-view-bottom">
-                              <a href="#" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                              <a href="#" class="aa-add-to-cart-btn">View Details</a>
+                              <a href="cart.php?Id=<?php echo $row4["pid"] ?>" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                              <a href="product-detail.php?Id=<?php echo $row4["pid"] ?>" class="aa-add-to-cart-btn">View Details</a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>                        
-                  </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
+                  </div>
+                </div>
               </div>
-              <!-- / quick view modal -->   
+              <!-- / quick view modal --> 
+                <?php }} ?>    
             </div>
             <div class="aa-product-catg-pagination">
               <nav>
@@ -209,35 +202,12 @@
                       <span aria-hidden="true">&laquo;</span>
                     </a>
                   </li>
-                  <li><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
+                  <li><a href="product.php">1</a></li>
+                  <li><a href="page.php">2</a></li>
                   <li><a href="#">3</a></li>
                   <li><a href="#">4</a></li>
                   <li><a href="#">5</a></li>
                   <li>
-                  <script type="text/javascript" src="js/jquery.js"></script>
-                  <script type="text/javascript">
-                   $(document).ready(function(){
-                   function loadTable(page){
-                     $.ajax({
-                     url: "ajax_pagination.php",
-                     type: "POST",
-                     data:{page_no :page},
-                     success: function(data){
-                       $("#pagination").html(data);
-                     }
-                     });
-                   }
-                   loadTable();
-
-                   $(document).on("click","pagination a",function(e){
-                     e.preventDefault();
-                     var page_id =$(this).attr("id");
-                     loadTable(page_id)
-                   })
-                  });
-                  </script>
-                  
                     <a href="#" aria-label="Next">
                       <span aria-hidden="true">&raquo;</span>
                     </a>
@@ -253,24 +223,29 @@
             <div class="aa-sidebar-widget">
               <h3>Category</h3>
               <ul class="aa-catg-nav">
-                <li><a href="#">Men</a></li>
-                <li><a href="">Women</a></li>
-                <li><a href="">Kids</a></li>
-                <li><a href="">Electornics</a></li>
-                <li><a href="">Sports</a></li>
+              <?php 
+                $sql2="SELECT * FROM categories";
+                $result2=mysqli_query($conn, $sql2) or die("Query Unsuccessful.");
+
+                while ($row2=mysqli_fetch_assoc($result2)) {
+                    ?>
+                    <li><a class ="cat" href="" data-id="<?php echo $row2['cname'] ?>" ><?php echo $row2['cname'] ?></a></li> 
+                    
+                <?php } ?>
+                <li><a href="" id="cat1">Show All</a></li>
               </ul>
             </div>
             <!-- single sidebar -->
             <div class="aa-sidebar-widget">
               <h3>Tags</h3>
               <div class="tag-cloud">
-                <a href="#">Fashion</a>
-                <a href="#">Ecommerce</a>
-                <a href="#">Shop</a>
-                <a href="#">Hand Bag</a>
-                <a href="#">Laptop</a>
-                <a href="#">Head Phone</a>
-                <a href="#">Pen Drive</a>
+              <?php 
+                $sql3="SELECT * FROM tags";
+                $result3=mysqli_query($conn, $sql3) or die("Query Unsuccessful.");
+                while ($row3=mysqli_fetch_assoc($result3)) {
+                    ?>
+                    <a href="#"><?php echo $row3['tname'] ?></a>
+                <?php } ?>
               </div>
             </div>
             <!-- single sidebar -->
@@ -371,6 +346,31 @@
     </div>
   </section>
   <!-- / product category -->
+  <script>
+  $(document).ready(function(){
+        $(document).on("click",".cat", function(e){
+          e.preventDefault();
+            var name = $(this).data('id');
+            //alert(name);
+            $.ajax({
+                    url: "cartadd.php",
+                    type: "POST",
+                    data: {id: name},
+                    success: function(data) {
+                        //alert(data);
+                    $("#hide").hide();
+                    $("#show").html(data);
+                    }
+        });
+        $(document).on("click",".cat", function(r){
+          e.preventDefault();
+            $("#hide").shows();
+            $("#show").hide();
+        });
+    });
+});
 
+  </script>
 
-  <?php  include('footer.php');?>		
+<?php require_once 'footer.php'; ?>
+
