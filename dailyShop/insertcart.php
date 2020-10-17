@@ -1,5 +1,4 @@
 <?php  include('header.php');?>	
-
 <?php  include('config.php');?>	            
                                  <?php
                                 if(!empty($_SESSION["shopping_cart"])) {
