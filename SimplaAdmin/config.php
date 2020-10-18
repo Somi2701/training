@@ -14,11 +14,11 @@ $dbuser = "root";
 $dbpass = "root";
 $dbname = "project";
 // Create connection
-$con = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
 // Check connection
-if ($con->connect_error) {
-    die("Connection failed: " . $con->connect_error);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
 // print_r($con);

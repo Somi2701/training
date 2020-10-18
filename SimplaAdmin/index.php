@@ -9,10 +9,12 @@
  * @author   Author <author@domain.com>
  * @license  http://opensource.org/MIT MIT License
  * @link     http://localhost/
- */  
+ */
+  
  ?>
-     <?php include ('header.php');?> 
-	 <?php include('sidebar.php');?>
+ <?php include ('header.php'); 
+?>
+	<?php include('sidebar.php');?>
 
 
 <div id="main-content"> <!-- Main Content Section with everything -->
@@ -320,7 +322,7 @@
 					
 				 </div>  -->
 				<!-- End .content-box-header -->
-				
+<!-- 				
 				<div class="content-box-content">
 					
 					<div class="tab-content default-tab">
@@ -363,7 +365,7 @@
 					
 				<!-- </div> -->
 				 <!-- End .content-box-content -->
-s				
+				
 			<!-- </div>  -->
 			<!-- End .content-box -->
 			<div class="clear"></div>

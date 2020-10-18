@@ -51,7 +51,7 @@
                   } else {
                       $usercart = $_SESSION['cart'];
                   }
-                  if (isset($_GET)) {
+                  if (isset($_GET["id"])) {
                       $usercart[] = $_GET["Id"];
                       $_SESSION['cart']=$usercart;
                   }
@@ -83,7 +83,7 @@
                       unset($_SESSION['cart'][$id]);
                    }
                         ?>    
-                      <tr>
+                     <!-- <tr>
                         <td><a class="remove" href="#"><fa class="fa fa-close"></fa></a></td>
                         <td><a href="#"><img src="img/man/polo-shirt-1.png" alt="img"></a></td>
                         <td><a class="aa-cart-title" href="#">Polo T-Shirt</a></td>
@@ -106,7 +106,7 @@
                         <td>$50</td>
                         <td><input class="aa-cart-quantity" type="number" value="1"></td>
                         <td>$50</td>
-                      </tr>
+                      </tr>-->
                       <tr>
                         <td colspan="6" class="aa-cart-view-bottom">
                           <div class="aa-cart-coupon">

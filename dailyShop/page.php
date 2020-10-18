@@ -64,7 +64,7 @@
                         ?>
                 <li>
                   <figure>
-                    <a class="aa-product-img" href="#"><img src="<?php echo $row["path"] ?>" alt="polo shirt img"></a>
+                    <a class="aa-product-img" href="#"><img src="images<?php echo $row["path"] ?>" alt="polo shirt img"></a>
                     <a class="aa-add-card-btn" href="cart.php?Id=<?php echo $row["pid"] ?>"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                     <figcaption>
                       <h4 class="aa-product-title"><a href="#"><?php echo $row["name"] ?></a></h4>
@@ -91,27 +91,10 @@
                     $(document).on("click","#one", function(){
                         var id=$(this).data("id");
                         alert(id);
-                        /* $.ajax({
-                        url: "quickView.php",
-                        type : "POST",
-                        data : {id:id},
-                        success : function(data){
-                          alert(data); */
-                        //alert(data);
-                        //console.log(data);
-                        /* if(data == 1){
-                          //loadTable();
-                          alert("Successfully Added");  
-                        } else {
-                          alert("failed");
-                        } */
-                        /* $("show").html(data);
-                    } */
-                });
-  
-                          
+                       
+                });         
               }); 
-                  /* }); */
+                  
                 </script>         
               
              <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -209,7 +192,7 @@
                     </a>
                   </li>
                   <li><a href="product.php">1</a></li>
-                  <li><a href="propage2.php">2</a></li>
+                  <li><a href="page.php">2</a></li>
                   <li><a href="#">3</a></li>
                   <li><a href="#">4</a></li>
                   <li><a href="#">5</a></li>
