@@ -63,14 +63,15 @@
                 $res = mysqli_query($conn, $sq) or die("SQL Query Failed.");
                 $number_of_results =mysqli_num_rows($res);
                 $number_of_pages =ceil($number_of_results / $result_per_page);
-                //$page=$_GET['page'];
+              
                 if (isset($_GET['page'])) {
-                    $page=$_GET['page'];;
+                    $pages=$_GET['page'];;
                 } else {
-                    $page=1;
+                    $pages=1;
                 } 
-                $this_page_first_result = ($page-1) * $result_per_page;
-                $sql="SELECT * FROM `products` ORDER BY `pid` DESC LIMIT {$this_page_first_result}, {$result_per_page}";
+                $this_page_first_result = ($pages-1) * $result_per_page;
+                $sql="SELECT * FROM `products` JOIN `categories` WHERE products.cid=
+                 categories.cid LIMIT {$this_page_first_result}, {$result_per_page}";
                /*  $sql="SELECT * FROM products"; */
 
           
@@ -95,13 +96,27 @@
                     <a href="" class="one" data-id="<?php echo $row["pid"] ?>" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
                   </div>
                   <!-- product badge -->
-                  <span class="aa-badge aa-hot" href="#">HOT!</span>
                   
+                  <?php
+                        if ($row['cname']=="Men" || $row['cname']=="Women") {
+                            ?>
+                            <span class="aa-badge aa-hot" href="#">Fashion!</span>
+                            <?php
+                        } elseif ($row['cname']=="Kids") {
+                            ?>
+                            <span class="aa-badge aa-hot" href="#">Offer!</span>
+                            <?php
+                        } else {
+                            ?>
+                            <span class="aa-badge aa-hot" href="#">Sale!</span>
+                
                   </li>
                         <?php 
                             }
+
                           }
-                          
+
+                        } 
                       ?>
             
                       
@@ -121,7 +136,7 @@
                         type : "POST",
                         data : {id:id},
                         success : function(data){
-                         
+                        
                         //alert(data);
                         //console.log(data);
                          
@@ -329,7 +344,7 @@ $(document).ready(function(){
         var name = $(this).data('id');
         //alert(name);
         $.ajax({
-            url: "cartadd.php",
+            url: "categoryshow.php",
             type: "POST",
             data: {id: name},
             success: function(data) {
@@ -349,14 +364,14 @@ $(document).ready(function(){
       var name1 = $(this).data('id');
       //var n=unserialize(name1);
       alert(name1);
-    // $.ajax({
-          // url: "tagload.php",
-           // type: "POST",
-           // data: {id1: name1},
-           // success: function(data) {
-                //alert(data);
-           // $("#hide").hide();
-           // $("#show").html(data);
+     $.ajax({
+           url: "tagsload.php",
+           type: "POST",
+            data: {id1: name1},
+           success: function(data) {
+                alert(data);
+            $("#hide").hide();
+           $("#show").html(data);
             }
         });
         $(document).on("click",".tags", function(e){

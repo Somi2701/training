@@ -4,7 +4,8 @@ $pd=$_POST["id"];
 $sql1="SELECT * FROM products JOIN categories where `pid` ='{$pd}'";
 $result1 = mysqli_query($conn, $sql1) or die("SQL Query Failed.");
 if (mysqli_num_rows($result1) > 0 ) {
-    while ($row1 = mysqli_fetch_assoc($result1)) {
+  $row1 = mysqli_fetch_assoc($result1);
+     // while ($row1 = mysqli_fetch_assoc($result1)) {
         echo '
         
               <div class="row">
@@ -14,28 +15,12 @@ if (mysqli_num_rows($result1) > 0 ) {
                     <div class="simpleLens-gallery-container" id="demo-1">
         <div class="simpleLens-container">
         <div class="simpleLens-big-image-container">
-            <a class="simpleLens-lens-image" data-lens-image="resources/images/icons/w1.jpeg">
+            <a class="simpleLens-lens-image" data-lens-image="'.$row1['path'].'">
                 <img src="'.$row1['path'].'" class="simpleLens-big-image">
             </a>
         </div>
     </div>
-    <div class="simpleLens-thumbnails-container">
-        <a href="#" class="simpleLens-thumbnail-wrapper"
-            data-lens-image="resources/images/icons/w1.jpeg"
-            data-big-image="resources/images/icons/w1.jpeg">
-            <img src="'.$row1['path'].'">
-        </a>                                    
-        <a href="#" class="simpleLens-thumbnail-wrapper"
-            data-lens-image="resources/images/icons/w1.jpeg"
-            data-big-image="resources/images/icons/w1.jpeg">
-            <img src="'.$row1['path'].'">
-        </a>
-        <a href="#" class="simpleLens-thumbnail-wrapper"
-            data-lens-image="resources/images/icons/w1.jpeg"
-            data-big-image="resources/images/icons/w1.jpeg">
-            <img src="'.$row1['path'].'">
-        </a>
-    </div>
+    
     </div>
     </div>
   </div>
@@ -80,8 +65,9 @@ if (mysqli_num_rows($result1) > 0 ) {
 </div>
    
         ';
-    }
+    
 } else {
     echo "Error : " .$sql. "<br>" .$conn -> error;
 }
+
 ?>

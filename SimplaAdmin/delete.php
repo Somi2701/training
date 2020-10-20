@@ -1,6 +1,5 @@
- 
- <?php
-include "config.php";
+  <?php
+  include "config.php";
 if (isset($_GET['sku'])) {
     $sku = $_GET['sku'];
     if ($_GET['action'] == 'delete') {

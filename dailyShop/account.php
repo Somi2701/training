@@ -43,11 +43,19 @@
               <div class="col-md-6">
                 <div class="aa-myaccount-register">                 
                  <h4>Register</h4>
-                 <form action="" class="aa-login-form">
-                    <label for="">Username or Email address<span>*</span></label>
-                    <input type="text" placeholder="Username or email">
+                 <form action="" class="aa-login-form" method="post">
+                    <label for="">Username<span>*</span></label>
+                    <input type="text" placeholder="Username" id='name'>
                     <label for="">Password<span>*</span></label>
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" id='password'>
+                    <label for="">Confirm Password<span>*</span></label>
+                    <input type="password" placeholder="Confirm password" id='repassword'>
+                    <label for="">Email<span>*</span></label>
+                    <input type="email" placeholder="Email" id='email'><br>
+                    <label for="">DOB<span>*</span></label>
+                    <input type="date" placeholder="Date of Birth" id='dob'><br>
+                    <label for="">Address<span>*</span></label>
+                    <input type="text" placeholder="Address" id='address'>
                     <button type="submit" class="aa-browse-btn">Register</button>                    
                   </form>
                 </div>
@@ -60,4 +68,34 @@
  </section>
  <!-- / Cart view section -->
 
- <?php  include('footer.php');?>		
+ <?php include('footer.php');?>
+
+ <script>
+      $(document).ready(function(){
+        $("#register").on("click",function(e){
+          e.preventDefault();
+         // e.preventDefault();
+          var name = $("#name").val();
+          var password = $("#password").val();
+          var repassword = $("#repassword").val();
+          var email = $("#email").val();
+          var dob = $("#dob").val();
+          var address = $("#address").val();
+          $.ajax({
+              url: "registrationform.php",
+              type : "POST",
+              data : {name:name, password: password, repassword: repassword, email: email, dob: dob, address: address},
+              success : function(data){
+                //alert(data);
+                if (data==1) {
+                  alert("successfully register");
+                } else {
+                  alert("failed");
+                }
+              }
+          });
+        });
+      });
+  </script>
+
+ 

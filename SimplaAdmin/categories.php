@@ -110,8 +110,7 @@
         $(document).on("click",".delete", function(){
                 //e.preventDefault();
                 var name = $(this).data('id');
-                //var element=this;
-                //alert(name);
+                
                 if(confirm("Are you sure?")) {
                     $.ajax({
                     url: "deletecat.php",
@@ -119,10 +118,7 @@
                     data : {sid:name},
                     success : function(data){
                       loadTable();
-                    //alert(data);
-                    //console.log(data);
                     if(data == 1){
-                    //$(element).closest("tr").fadeOut();
                     alert("Successfully Deleted");  
                     } else {
                     alert("failed");
@@ -142,7 +138,7 @@
                 var eid = $(this).data("eid");
                     //alert(eid);
                 $.ajax({
-                    url: "updateformcat.php",
+                    url: "update1cat.php",
                     type: "POST",
                     data: {id: eid},
                     success: function(data) {
@@ -167,10 +163,10 @@
                   data : {id: id, name: name},
                   success: function(data) {
                     if(data == 1){
-                      $("#modal-form").hide();
+                      //$("#modal-form").hide();
                       //$("#show").show();
                       //loadTable();
-                        //alert("successfully updated");
+                        alert("successfully updated");
                         //$("#modal").hide();
                     }
                   }
@@ -179,7 +175,7 @@
                 loadTable();
                 $("#show").show();
         });
-        loadTable();
+       
       });
   </script>
 </body>

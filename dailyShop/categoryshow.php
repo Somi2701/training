@@ -37,8 +37,6 @@
                       else{
                         echo "Error : " .$sql. "<br>" .$conn -> error;
                       }
-                     ?>
-            
+                     ?>                   
                       
-                      
-<ul>
+</ul>
